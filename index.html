@@ -121,7 +121,7 @@
               <button class="tablinks" onclick="openCity(event, 'tm')">Texture Mapping</button>
               <button class="tablinks" onclick="openCity(event, 'ss')">Soft Shadows</button>
               <button class="tablinks" onclick="openCity(event, 'gr')">Glossy Reflection</button>
-              <button class="tablinks" onclick="openCity(event, 'bm')">Bump mapping</button>
+              <button class="tablinks" onclick="openCity(event, 'bm')">Bump Mapping</button>
               <button class="tablinks" onclick="openCity(event, 'aa')">Anti-aliasing</button>
               <button class="tablinks" onclick="openCity(event, 'mb')">Motion Blur</button>
               <button class="tablinks" onclick="openCity(event, 'an')">Animation</button>
@@ -135,7 +135,13 @@
 
             <div id="tm" class="tabcontent">
               <h3>Texture Mapping</h3>
-              <p>Paris is the capital of France.</p> 
+              <p>Textures on objects are specified in the lua file. Texture mapping can be applied to spheres and cubes.</p> 
+              <h4>Method</h4>
+                <p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation.</p>
+                <h5> UV Mapping of a Sphere</h5>
+                <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
+                <h5> UV Mapping of a Cube<h5>
+                    <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
             </div>
 
             <div id="ss" class="tabcontent">
@@ -150,7 +156,9 @@
             
             <div id="bm" class="tabcontent">
               <h3>Bump Mapping</h3>
-              <p>Tokyo is the capital of Japan.</p>
+              <p>Bump maps are specified in the lua file. My implementation uses grayscale images to determine the bumps. Bump mapping can be applied to spheres and cubes.</p>
+                <h4>Method</h4>
+                <p>I implemented this feature by following the method shown in class. In particular, the normal vector is manipulated to give the effect of bumps on objects UV mapping of the objects are done the same way in texture mapping.</p>
             </div>
             
             <div id="aa" class="tabcontent">
