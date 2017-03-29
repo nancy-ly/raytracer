@@ -183,12 +183,20 @@
         </div>
         <!-- /.container -->
 </nav>
-   <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="img01">
-      <div id="caption"></div>
+    
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="img-responsive" src="" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
+    </div>
+      
     <!-- Page Content -->
     <div class="container">
 
@@ -225,9 +233,9 @@
                     Image 3: Depth of field enabled with focal plane 1200 units away from the origin<br/>
                     </i></p>
                 <div id="imgs">
-                     <img id="myImg" src="imgs/dofbefore.png" alt="Scene with depth of field disabled" height="300" width="300"> 
-                    <img id="myImg" src="imgs/dof0.png" alt="Scene with depth of field enabled with focal plane at the origin" height="300" width="300">
-                    <img id="myImg" src="imgs/dof1200.png" alt="Scene with depth of field enabled with focal plane 1200 units away from the origin" height="300" width="300">
+                     <img id="myImg" data-toggle="modal" data-target="#myModal" src="imgs/dofbefore.png" alt="Scene with depth of field disabled" height="300" width="300"> 
+                    <img id="myImg2" data-toggle="modal" data-target="#myModal" src="imgs/dof0.png" alt="Scene with depth of field enabled with focal plane at the origin" height="300" width="300">
+                    <img id="myImg3" data-toggle="modal" data-target="#myModal" src="imgs/dof1200.png" alt="Scene with depth of field enabled with focal plane 1200 units away from the origin" height="300" width="300">
                 </div>
             </div>
 
@@ -238,9 +246,9 @@
                     Scene with texture mapping applied, follow by the texture maps
                     </i></p>
                 <div id="imgs">
-                     <img id="myImg" src="imgs/tm.png" alt="Scene with texture mapped objects" height="300" width="300"> 
-                    <img id="myImg" src="imgs/ozma.png" alt="First texture map" height="300" width="300">
-                    <img id="myImg" src="imgs/texture.png" alt="Second texture map" width="300">
+                     <img id="myImg4" data-toggle="modal" data-target="#myModal" src="imgs/tm.png" alt="Scene with texture mapped objects" height="300" width="300"> 
+                    <img id="myImg5" data-toggle="modal" data-target="#myModal" src="imgs/ozma.png" alt="First texture map" height="300" width="300">
+                    <img id="myImg6" data-toggle="modal" data-target="#myModal" src="imgs/texture.png" alt="Second texture map" width="300">
                 </div>
               
               <h4>Method</h4>
@@ -273,7 +281,7 @@
                     </i></p>
                 <div id="imgs">
                      <img id="myImg" src="imgs/grbefore.png" alt="Scene with glossy reflections disabled" height="300" width="300"> 
-                    <img id="myImg" src="imgs/after.png" alt="Scene with glossy reflections enabled. The pink spheres become more glossy from left to right." height="300" width="300">
+                    <img id="myImg" src="imgs/grafter.png" alt="Scene with glossy reflections enabled. The pink spheres become more glossy from left to right" height="300" width="300">
                 </div>
             </div>
             
@@ -354,26 +362,12 @@
             }
                 document.getElementById("dof").click();
                 
-                // Get the modal
-                var modal = document.getElementById('myModal');
-
-                // Get the image and insert it inside the modal - use its "alt" text as a caption
-                var img = document.getElementById('myImg');
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                img.onclick = function(){
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-                }
-
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
-
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() { 
-                    modal.style.display = "none";
-                }
+                $(document).ready(function () {
+                        $('#myModal').on('show.bs.modal', function (e) {
+                            var image = $(e.relatedTarget).attr('src');
+                            $(".img-responsive").attr("src", image);
+                        });
+                });
             </script>
                 
         </div>
