@@ -218,9 +218,6 @@
             <p>This webpage is dedicated to showcase my final project for the graphics course CS488 at the University of Waterloo. The purpose of this project is to further explore ray tracing techniques to improve the rendering of scenes. See below for a gallery of the different rendering techniques used.</p>
             
             <div class="container">
-              <h2>Dynamic Tabs</h2>
-              <p>To make the tabs toggleable, add the data-toggle="tab" attribute to each link. Then add a .tab-pane class with a unique ID for every tab and wrap them inside a div element with class .tab-content.</p>
-
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Depth of Field</a></li>
                 <li><a data-toggle="tab" href="#menu1">Texture Mapping</a></li>
@@ -350,163 +347,8 @@
               </div>
             </div>
 
-            <div class="tab">
-              <button class="tablinks" onclick="openCity(event, 'dof')">Depth of Field</button>
-              <button class="tablinks" onclick="openCity(event, 'tm')">Texture Mapping</button>
-              <button class="tablinks" onclick="openCity(event, 'ss')">Soft Shadows</button>
-              <button class="tablinks" onclick="openCity(event, 'gr')">Glossy Reflection</button>
-              <button class="tablinks" onclick="openCity(event, 'bm')">Bump Mapping</button>
-              <button class="tablinks" onclick="openCity(event, 'aa')">Anti-aliasing</button>
-              <button class="tablinks" onclick="openCity(event, 'mb')">Motion Blur</button>
-              <button class="tablinks" onclick="openCity(event, 'an')">Animation</button>
-              <button class="tablinks" onclick="openCity(event, 'fs')">Final Scene</button>
-            </div>
-
-            <div id="dof" class="tabcontent">
-              <h3>Depth of Field</h3>
-                <p><i>
-                    <p>The depth of field option and focal plane are specified in the lua file. Objects in focus will be clear, while objects further away from the focal point appear not in focus. There is currently a known issue where parts of objects appear clear despite not being in focus.</p> 
-                    Image 1: Depth of field disabled<br />
-                    Image 2: Depth of field enabled with focal plane at origin<br/>
-                    Image 3: Depth of field enabled with focal plane 1200 units away from the origin<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" data-toggle="modal" data-target="#myModal" src="imgs/dofbefore.png" alt="Scene with depth of field disabled" height="300" width="300"> 
-                    <img id="myImg2" data-toggle="modal" data-target="#myModal" src="imgs/dof0.png" alt="Scene with depth of field enabled with focal plane at the origin" height="300" width="300">
-                    <img id="myImg3" data-toggle="modal" data-target="#myModal" src="imgs/dof1200.png" alt="Scene with depth of field enabled with focal plane 1200 units away from the origin" height="300" width="300">
-                </div>
-            </div>
-
-            <div id="tm" class="tabcontent">
-              <h3>Texture Mapping</h3>
-                <p>Textures on objects are specified in the lua file. Texture mapping can be applied to spheres and cubes.</p> 
-                <p><i>
-                    Scene with texture mapping applied, follow by the texture maps
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg4" data-toggle="modal" data-target="#myModal" src="imgs/tm.png" alt="Scene with texture mapped objects" height="300" width="300"> 
-                    <img id="myImg5" data-toggle="modal" data-target="#myModal" src="imgs/ozma.png" alt="First texture map" height="300" width="300">
-                    <img id="myImg6" data-toggle="modal" data-target="#myModal" src="imgs/texture.png" alt="Second texture map" width="300">
-                </div>
-              
-              <h4>Method</h4>
-                <p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation.</p>
-                <h5> UV Mapping of a Sphere</h5>
-                <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
-                <h5> UV Mapping of a Cube<h5>
-                    <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
-            </div>
-
-            <div id="ss" class="tabcontent">
-              <h3>Soft Shadows</h3>
-              <p>The soft shadow option is specified in the lua file. Shadows in the scene will appear faded rather than crisp.</p> 
-                <p><i>
-                    Image 1: Soft shadows disabled <br/>
-                    Image 2: Soft shadows enabled<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/ssbefore.png" alt="Scene with soft shadows disabled" height="300" width="300"> 
-                    <img id="myImg" src="imgs/ssafter.png" alt="Scene with soft shadows enabled" height="300" width="300">
-                </div>
-            </div>
             
-            <div id="gr" class="tabcontent">
-              <h3>Glossy Reflections</h3>
-              <p>The glossy reflection option specified in the lua file. Reflections will appear glossy, depending on the level of glossiness. Glossiness is determined by the object's Phong Exponent. An exponent of 1 means the object is diffuse. An exponent of over 100 means the object is very glossy to the point of mirror reflection. When glossy reflections are not enabled, all reflections will be mirror reflections.</p> 
-                <p><i>
-                    Image 1: Glossy reflection disabled <br/>
-                    Image 2: Glossy reflection enabled. The pink spheres become more glossy from left to right, with the first sphere being diffuse and the last sphere being very glossy.<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/grbefore.png" alt="Scene with glossy reflections disabled" height="300" width="300"> 
-                    <img id="myImg" src="imgs/grafter.png" alt="Scene with glossy reflections enabled. The pink spheres become more glossy from left to right" height="300" width="300">
-                </div>
-            </div>
             
-            <div id="bm" class="tabcontent">
-              <h3>Bump Mapping</h3>
-              <p>Bump maps are specified in the lua file. Grayscale images are used to determine the bumps. Bump mapping can be applied to spheres and cubes.</p>
-                <p><i>
-                    Image 1: Objects without bump mapping <br/>
-                    Image 2: Objects with bump mapping<br/>
-                    Image 2: Objects with bump mapping with the light source at a different position<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/bmbefore.png" alt="Scene with regular objects" height="300" width="300"> 
-                    <img id="myImg" src="imgs/bm1.png" alt="Scene with bump mapping applied to objects" height="300" width="300">
-                    <img id="myImg" src="imgs/bm2.png" alt="Scene with bump mapping applied to objects with light source moved" height="300" width="300">
-                </div>
-                
-                <h4>Method</h4>
-                <p>I implemented this feature by following the method shown in class. In particular, the normal vector is manipulated to give the effect of bumps on objects UV mapping of the objects are done the same way in texture mapping.</p>
-            </div>
-            
-            <div id="aa" class="tabcontent">
-              <h3>Anti-aliasing</h3>
-              <p>The anti-aliasing option is specified in the lua file. Anti-aliasing allows the edges of the object to look less pixelated and more realistic.</p>
-                <p><i>
-                    Image 1: Anti-aliasing disabled <br/>
-                    Image 2: Anti-aliasing enabled<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/aabefore.png" alt="Scene without anti-aliasing" height="300" width="300"> 
-                    <img id="myImg" src="imgs/aaafter.png" alt="Scene with anti-aliasing" height="300" width="300">
-                </div>
-            </div>
-            
-            <div id="mb" class="tabcontent">
-              <h3>Motion Blur</h3>
-              <p>Objects in motion are specified in the lua file. The motion blur option is also specified in the lua file. Motion blur is used to show moving objects.</p>
-                <p><i>
-                    Image 1: Scene without motion blur <br/>
-                    Image 2: Scene with stochastic sampling in time<br/>
-                    Image 2: Scene with stochastic sampling in time and space<br/>
-                    </i></p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/mbbefore.png" alt="Scene without motion blur" height="300" width="300"> 
-                    <img id="myImg" src="imgs/mb1.png" alt="Scene with stochastic sampling in time" height="300" width="300">
-                    <img id="myImg" src="imgs/mb2.png" alt="Scene with stochastic sampling in time and space" height="300" width="300">
-                </div>
-            </div>
-            
-            <div id="an" class="tabcontent">
-              <h3>Animation</h3>
-              <p>An animation was created through numerous lua files where the camera position is slightly altered each time. Each scene file rendered an image, with all of the images being strung together into a .gif through an external .gif creation application.</p>
-                <div id="imgs">
-                     <img id="myImg" src="imgs/animation.gif" alt="Animated scene with the camera being moved up and down" height="300" width="300"> 
-                </div>
-                    
-            </div>
-            
-            <div id="fs" class="tabcontent">
-              <h3>Final Scene</h3>
-              <p>The final scene, titled Pac-Man's Galaxy. The scene uses texture mapping, mirror reflections in the ghosts, and anti-aliasing.</p>
-                <img id="myImg" src="imgs/finalscene.png" alt="Pac-Man's Galaxy" height="300" width="300">
-            </div>
-
-            <script>
-                function openCity(evt, cityName) {
-                    var i, tabcontent, tablinks;
-                    tabcontent = document.getElementsByClassName("tabcontent");
-                    for (i = 0; i < tabcontent.length; i++) {
-                        tabcontent[i].style.display = "none";
-                    }
-                    tablinks = document.getElementsByClassName("tablinks");
-                    for (i = 0; i < tablinks.length; i++) {
-                        tablinks[i].className = tablinks[i].className.replace(" active", "");
-                    }
-                    document.getElementById(cityName).style.display = "block";
-                    evt.currentTarget.className += " active";
-                }
-                    document.getElementById("dof").click();
-
-                    $(document).ready(function () {
-                            $('#myModal').on('show.bs.modal', function (e) {
-                                var image = $(e.relatedTarget).attr('src');
-                                $(".img-responsive").attr("src", image);
-                            });
-                    });
-            </script>
                 
         </div>
 
@@ -530,6 +372,15 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+            
+    <script>
+            $(document).ready(function () {
+                    $('#myModal').on('show.bs.modal', function (e) {
+                        var image = $(e.relatedTarget).attr('src');
+                        $(".img-responsive").attr("src", image);
+                    });
+            });
+    </script>
 
 </body>
 
