@@ -190,16 +190,16 @@
 </nav>
     
     <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img class="img-responsive" src="" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img class="img-responsive" src="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
       
     <!-- Page Content -->
@@ -224,8 +224,13 @@
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Depth of Field</a></li>
                 <li><a data-toggle="tab" href="#menu1">Texture Mapping</a></li>
-                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-                <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+                <li><a data-toggle="tab" href="#menu2">Soft Shadows</a></li>
+                <li><a data-toggle="tab" href="#menu3">Glossy Reflections</a></li>
+                  <li><a data-toggle="tab" href="#menu4">Bump Mapping</a></li>
+                  <li><a data-toggle="tab" href="#menu5">Anti-aliasing</a></li>
+                  <li><a data-toggle="tab" href="#menu6">Motion Blur</a></li>
+                  <li><a data-toggle="tab" href="#menu7">Animation</a></li>
+                  <li><a data-toggle="tab" href="#menu8">Final Scene</a></li>
               </ul>
 
               <div class="tab-content">
@@ -285,6 +290,62 @@
                              <img id="myImg" src="imgs/grbefore.png" alt="Scene with glossy reflections disabled" height="300" width="300"> 
                             <img id="myImg" src="imgs/grafter.png" alt="Scene with glossy reflections enabled. The pink spheres become more glossy from left to right" height="300" width="300">
                         </div>
+                </div>
+                <div id="menu4" class="tab-pane fade">
+                       <h3>Bump Mapping</h3>
+              <p>Bump maps are specified in the lua file. Grayscale images are used to determine the bumps. Bump mapping can be applied to spheres and cubes.</p>
+                <p><i>
+                    Image 1: Objects without bump mapping <br/>
+                    Image 2: Objects with bump mapping<br/>
+                    Image 2: Objects with bump mapping with the light source at a different position<br/>
+                    </i></p>
+                <div id="imgs">
+                     <img id="myImg" src="imgs/bmbefore.png" alt="Scene with regular objects" height="300" width="300"> 
+                    <img id="myImg" src="imgs/bm1.png" alt="Scene with bump mapping applied to objects" height="300" width="300">
+                    <img id="myImg" src="imgs/bm2.png" alt="Scene with bump mapping applied to objects with light source moved" height="300" width="300">
+                </div>
+                
+                <h4>Method</h4>
+                <p>I implemented this feature by following the method shown in class. In particular, the normal vector is manipulated to give the effect of bumps on objects UV mapping of the objects are done the same way in texture mapping.</p>
+
+                </div>
+                <div id="menu5" class="tab-pane fade">
+                      <h3>Anti-aliasing</h3>
+              <p>The anti-aliasing option is specified in the lua file. Anti-aliasing allows the edges of the object to look less pixelated and more realistic.</p>
+                <p><i>
+                    Image 1: Anti-aliasing disabled <br/>
+                    Image 2: Anti-aliasing enabled<br/>
+                    </i></p>
+                <div id="imgs">
+                     <img id="myImg" src="imgs/aabefore.png" alt="Scene without anti-aliasing" height="300" width="300"> 
+                    <img id="myImg" src="imgs/aaafter.png" alt="Scene with anti-aliasing" height="300" width="300">
+                </div> 
+                </div>
+                <div id="menu6" class="tab-pane fade">
+                       <h3>Motion Blur</h3>
+              <p>Objects in motion are specified in the lua file. The motion blur option is also specified in the lua file. Motion blur is used to show moving objects.</p>
+                <p><i>
+                    Image 1: Scene without motion blur <br/>
+                    Image 2: Scene with stochastic sampling in time<br/>
+                    Image 2: Scene with stochastic sampling in time and space<br/>
+                    </i></p>
+                <div id="imgs">
+                     <img id="myImg" src="imgs/mbbefore.png" alt="Scene without motion blur" height="300" width="300"> 
+                    <img id="myImg" src="imgs/mb1.png" alt="Scene with stochastic sampling in time" height="300" width="300">
+                    <img id="myImg" src="imgs/mb2.png" alt="Scene with stochastic sampling in time and space" height="300" width="300">
+                </div>
+                </div>
+                <div id="menu7" class="tab-pane fade">
+                       <h3>Animation</h3>
+              <p>An animation was created through numerous lua files where the camera position is slightly altered each time. Each scene file rendered an image, with all of the images being strung together into a .gif through an external .gif creation application.</p>
+                <div id="imgs">
+                     <img id="myImg" src="imgs/animation.gif" alt="Animated scene with the camera being moved up and down" height="300" width="300"> 
+                </div>
+                </div>
+                <div id="menu8" class="tab-pane fade">
+                       <h3>Final Scene</h3>
+              <p>The final scene, titled Pac-Man's Galaxy. The scene uses texture mapping, mirror reflections in the ghosts, and anti-aliasing.</p>
+                <img id="myImg" src="imgs/finalscene.png" alt="Pac-Man's Galaxy" height="300" width="300">
                 </div>
               </div>
             </div>
