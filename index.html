@@ -250,7 +250,7 @@
                       <p>The glossy reflection option specified in the lua file. Reflections will appear glossy, depending on the level of glossiness. Glossiness is determined by the object's Phong Exponent. An exponent of 1 means the object is diffuse. An exponent of over 100 means the object is very glossy to the point of mirror reflection. When glossy reflections are not enabled, all reflections will be mirror reflections.</p> 
                         <p><i>
                             Image 1: Glossy reflection disabled <br/>
-                            Image 2: Glossy reflection enabled. The pink spheres become more glossy from left to right, with the first sphere being diffuse and the last sphere being very glossy.<br/>
+                            Image 2: Glossy reflection enabled. The pink spheres become more glossy from left to right, with the first sphere being diffuse and the last sphere being very glossy<br/>
                             </i></p>
 			<div class="container">
  
@@ -418,43 +418,45 @@
 		<div class="item" id="image-1">
 			<img class="thumbnail img-responsive" title="Depth of field disabled" src="imgs/dofbefore.png">
 		</div>
+		   <div class="item" id="image-1">
+			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 1200" src="imgs/dof1200.png">
+		</div> 
 		<div class="item" id="image-1">
 			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 0" src="imgs/dof0.png">
 		</div>
-		<div class="item" id="image-1">
-			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 1200" src="imgs/dof1200.png">
-		</div>
+		
       
 		<!-- #image-2 -->
 		<div class="item" id="image-2">
 			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 0" src="imgs/dof0.png">
 		</div>
+		  <div class="item" id="image-2">
+			<img class="thumbnail img-responsive" title="Depth of field disabled" src="imgs/dofbefore.png">
+		</div>   
 		<div class="item" id="image-2">
 			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 1200" src="imgs/dof1200.png">
 		</div>
-		<div class="item" id="image-2">
-			<img class="thumbnail img-responsive" title="Depth of field disabled" src="imgs/dofbefore.png">
-		</div>   
+		  
       
 		<!-- #image-3-->
 		<div class="item" id="image-3">
 			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 1200" src="imgs/dof1200.png">
 		</div>
 		<div class="item" id="image-3">
+			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 0" src="imgs/dof0.png">
+		<div class="item" id="image-3">
 			<img class="thumbnail img-responsive" title="Depth of field disabled" src="imgs/dofbefore.png">
 		</div>
-		<div class="item" id="image-3">
-			<img class="thumbnail img-responsive" title="Depth of field enabled with focal plane 0" src="imgs/dof0.png">
 		</div>     
 		    <!-- #image-1 -->
 		<div class="item" id="image-11">
 			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
 		</div>
 		<div class="item" id="image-11">
-			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
+			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
 		</div>
 		<div class="item" id="image-11">
-			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
+			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
 		</div>
       
 		<!-- #image-2 -->
@@ -462,22 +464,22 @@
 			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
 		</div>
 		<div class="item" id="image-22">
-			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
-		</div>
-		<div class="item" id="image-22">
 			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
-		</div>   
+		</div> 
+		<div class="item" id="image-22">
+			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
+		</div>  
       
 		<!-- #image-3-->
 		<div class="item" id="image-33">
 			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
 		</div>
 		<div class="item" id="image-33">
-			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
-		</div>
-		<div class="item" id="image-33">
 			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
-		</div>        
+		</div> 
+		<div class="item" id="image-33">
+			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
+		</div>       
 		    <!-- #image-1 -->
 		<div class="item" id="image-a">
 			<img class="thumbnail img-responsive" title="Scene with soft shadows diabled" src="imgs/ssbefore.png">
@@ -491,7 +493,7 @@
 			<img class="thumbnail img-responsive" title="Scene with soft shadows enabled" src="imgs/ssafter.png">
 		</div>
 		<div class="item" id="image-b">
-			<img class="thumbnail img-responsive" title="Scene with soft shadows diabled" src="imgs/ssbefore.png">
+			<img class="thumbnail img-responsive" title="Scene with soft shadows disabled" src="imgs/ssbefore.png">
 		</div>
 		    
 		    <!-- #image-1 -->
@@ -514,10 +516,10 @@
 			<img class="thumbnail img-responsive" title="Regular objects" src="imgs/bmbefore.png">
 		</div>
 		<div class="item" id="image-11a">
-			<img class="thumbnail img-responsive" title="Bump mapping applied to objects" src="imgs/bm1.png">
+			<img class="thumbnail img-responsive" title="Bump mapping applied to objects with light source moved" src="imgs/bm2.png">
 		</div>
 		<div class="item" id="image-11a">
-			<img class="thumbnail img-responsive" title="Bump mapping applied to objects with light source moved" src="imgs/bm2.png">
+			<img class="thumbnail img-responsive" title="Bump mapping applied to objects" src="imgs/bm1.png">
 		</div>
       
 		<!-- #image-2 -->
@@ -525,10 +527,10 @@
 			<img class="thumbnail img-responsive" title="Bump mapping applied to objects" src="imgs/bm1.png">
 		</div>
 		<div class="item" id="image-22a">
-			<img class="thumbnail img-responsive" title="Bump mapping applied to objects with light source moved" src="imgs/bm2.png">
+			<img class="thumbnail img-responsive" title="Regular objects" src="imgs/bmbefore.png">
 		</div>
 		<div class="item" id="image-22a">
-			<img class="thumbnail img-responsive" title="Regular objects" src="imgs/bmbefore.png">
+			<img class="thumbnail img-responsive" title="Bump mapping applied to objects with light source moved" src="imgs/bm2.png">
 		</div>   
       
 		<!-- #image-3-->
@@ -536,11 +538,11 @@
 			<img class="thumbnail img-responsive" title="Bump mapping applied to objects with light source moved" src="imgs/bm2.png">
 		</div>
 		<div class="item" id="image-33a">
-			<img class="thumbnail img-responsive" title="Regular objects" src="imgs/bmbefore.png">
-		</div>
-		<div class="item" id="image-33a">
 			<img class="thumbnail img-responsive" title="Bump mapping applied to objects" src="imgs/bm1.png">
 		</div> 
+		<div class="item" id="image-33a">
+			<img class="thumbnail img-responsive" title="Regular objects" src="imgs/bmbefore.png">
+		</div>
 		      <!-- #image-1 -->
 		<div class="item" id="image-11b">
 			<img class="thumbnail img-responsive" title="Scene without anti-aliasing" src="imgs/aabefore.png">
@@ -561,10 +563,10 @@
 			<img class="thumbnail img-responsive" title="Scene without motion blur" src="imgs/mbbefore.png">
 		</div>
 		<div class="item" id="image-11c">
-			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time" src="imgs/mb1.png">
+			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time and space" src="imgs/mb2.png">
 		</div>
 		<div class="item" id="image-11c">
-			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time and space" src="imgs/mb2.png">
+			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time" src="imgs/mb1.png">
 		</div>
       
 		<!-- #image-2 -->
@@ -572,10 +574,10 @@
 			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time" src="imgs/mb1.png">
 		</div>
 		<div class="item" id="image-22c">
-			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time and space" src="imgs/mb2.png">
+			<img class="thumbnail img-responsive" title="Scene without motion blur" src="imgs/mbbefore.png">
 		</div>
 		<div class="item" id="image-22c">
-			<img class="thumbnail img-responsive" title="Scene without motion blur" src="imgs/mbbefore.png">
+			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time and space" src="imgs/mb2.png">
 		</div>   
       
 		<!-- #image-3-->
@@ -583,10 +585,10 @@
 			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time and space" src="imgs/mb2.png">
 		</div>
 		<div class="item" id="image-33c">
-			<img class="thumbnail img-responsive" title="Scene without motion blur" src="imgs/mbbefore.png">
+			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time" src="imgs/mb1.png">
 		</div>
 		<div class="item" id="image-33c">
-			<img class="thumbnail img-responsive" title="Scene with stochastic sampling in time" src="imgs/mb1.png">
+			<img class="thumbnail img-responsive" title="Scene without motion blur" src="imgs/mbbefore.png">
 		</div> 
 		    
 		    <div class="item" id="image-11q">
