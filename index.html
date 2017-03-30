@@ -155,9 +155,8 @@
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                   <h3>Depth of Field</h3>
-                <p>
                     <p>The depth of field option and focal plane are specified in the lua file. Objects in focus will be clear, while objects further away from the focal point appear not in focus. There is currently a known issue where parts of objects appear clear despite not being in focus.</p> 
-                    <i>Image 1: Depth of field disabled<br />
+                    <p><i>Image 1: Depth of field disabled<br />
                     Image 2: Depth of field enabled with focal plane at origin<br/>
                     Image 3: Depth of field enabled with focal plane 1200 units away from the origin<br/>
                     </i></p>
@@ -265,7 +264,7 @@
 			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
 		</div>
 		<div class="item" id="image-11">
-			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/ozma.png">
+			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
 		</div>
 		<div class="item" id="image-11">
 			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
@@ -273,7 +272,7 @@
       
 		<!-- #image-2 -->
 		<div class="item" id="image-22">
-			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/ozma.png">
+			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
 		</div>
 		<div class="item" id="image-22">
 			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/texture.png">
@@ -290,19 +289,19 @@
 			<img class="thumbnail img-responsive" title="Scene with texture mapped objects" src="imgs/tm.png">
 		</div>
 		<div class="item" id="image-33">
-			<img class="thumbnail img-responsive" title="Second texture map" src="imgs/ozma.png">
+			<img class="thumbnail img-responsive" title="First texture map" src="imgs/ozma.png">
 		</div>        
 		
 	</div>
-       </div>
-                
-                    <h4>Method</h4>
-                    <p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation.</p>
-                    <h5> UV Mapping of a Sphere</h5>
-                    <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
-                    <h5> UV Mapping of a Cube<h5>
-                        <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
 
+                
+                    <p>Method</p>
+                    <p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation.</p>
+                    <p> UV Mapping of a Sphere<p>
+                    <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
+                    <p> UV Mapping of a Cube<p>
+                        <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
+			    </div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                       <h3>Soft Shadows</h3>
@@ -498,9 +497,6 @@
             <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
             
           </div>
-      </div>
-      <div class="modal-footer">
-          <button class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
