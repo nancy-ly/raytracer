@@ -11,8 +11,10 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="../dist/ekko-lightbox.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 
     <title>Extended Ray Tracer</title>
 
@@ -240,6 +242,12 @@
                     Image 3: Depth of field enabled with focal plane 1200 units away from the origin<br/>
                     </i></p>
                     <div id="imgs">
+                        <a href="imgs/dofbefore.png" data-toggle="lightbox" data-gallery="example-gallery">
+                            <img src="imgs/dofbefore.png" class="img-fluid myImg" alt="Scene with depth of field disabled" height="400" width="400">
+                        </a>
+                        <a href="imgs/dof0.png" data-toggle="lightbox" data-gallery="example-gallery">
+                            <img src="imgs/dof0.png" class="img-fluid myImg" alt="Scene with depth of field enabled with focal plane at the origin" height="400" width="400">>
+                        </a>
                          <img class="myImg" data-toggle="modal" data-target="#myModal" src="imgs/dofbefore.png" alt="Scene with depth of field disabled" height="400" width="400"> 
                         <img class="myImg" data-toggle="modal" data-target="#myModal" src="imgs/dof0.png" alt="Scene with depth of field enabled with focal plane at the origin" height="400" width="400">
                         <img class="myImg" data-toggle="modal" data-target="#myModal" src="imgs/dof1200.png" alt="Scene with depth of field enabled with focal plane 1200 units away from the origin" height="400" width="400">
@@ -372,14 +380,17 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <script src="../dist/ekko-lightbox.js"></script>
             
     <script>
-            $(document).ready(function () {
-                    $('#myModal').on('show.bs.modal', function (e) {
-                        var image = $(e.relatedTarget).attr('src');
-                        $(".img-responsive").attr("src", image);
-                    });
-            });
+
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
     </script>
 
 </body>
