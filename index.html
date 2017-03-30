@@ -11,7 +11,6 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="../dist/ekko-lightbox.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
@@ -180,15 +179,9 @@
 							<img class="thumbnail img-responsive myImg" id="image-3" src="imgs/dof1200.png">
 						</a>
 					</div>
-	    </div>
-    
-    		<hr>
-    
- 
-	
-				
+	    </div>		
        </div>
-		      </div>
+	</div>
 		  
                 <div id="menu1" class="tab-pane fade">
                       <h3>Texture Mapping</h3>
@@ -217,13 +210,6 @@
 						</a>
 					</div>
 	    </div>
-    
-    		<hr>
-    
- 
-	
-				
-		
 	</div>
 
                 
@@ -232,9 +218,8 @@
                     <p> UV Mapping of a Sphere<p>
                     <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
                     <p> UV Mapping of a Cube<p>
-                        <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
-			    </div>
-                </div>
+                    <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
+		
                 <div id="menu2" class="tab-pane fade">
                       <h3>Soft Shadows</h3>
                   <p>The soft shadow option is specified in the lua file. Shadows in the scene will appear faded rather than crisp.</p> 
