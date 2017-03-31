@@ -153,10 +153,13 @@
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                   <h3>Depth of Field</h3>
-                    <p>The depth of field option and focal plane are specified in the lua file. Objects in focus will be clear, while objects further away from the focal point appear not in focus. There is currently a known issue where parts of objects appear clear despite not being in focus.</p> 
+                    <p>The depth of field option and focal plane are specified in the lua file as a parameter to the render command. Objects in focus will be clear, while objects further away from the focal point appear not in focus. <br/>
+			    To achieve this, a focal plane is specified. This is a plane in the z-axis in world co-ordinates. Multiple rays are directed at each pixel from slightly different camera positions in the xy direction. These positions were chosen using regular sampling.<br/>
+			There is currently a known issue where parts of objects appear clear despite not being in focus.<br/>
+			The following images show spheres that gradually become further away from the camera, with the large sphere at the bottom being the furthest away. The number of samples used is 25.</p> 
                     <p><i>Image 1: Depth of field disabled<br />
                     Image 2: Depth of field enabled with focal plane at origin<br/>
-                    Image 3: Depth of field enabled with focal plane 1200 units away from the origin<br/>
+                    Image 3: Depth of field enabled with focal plane z = -1200<br/>
                     </i></p>
 	<div class="container">
  
@@ -184,7 +187,8 @@
 		  
                 <div id="menu1" class="tab-pane fade">
                       <h3>Texture Mapping</h3>
-                <p>Textures on objects are specified in the lua file. Texture mapping can be applied to spheres and cubes.</p> 
+                <p>Textures on objects are specified in the lua file as its own command. Texture mapping can be applied to spheres and cubes.</p> 
+			<p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation. See below for images and a more in-depth description of how the uv coordinates are calculated.</p>
                 <p><i>
                     Scene with texture mapping applied, follow by the texture maps
                     </i></p>
@@ -211,17 +215,16 @@
 	    </div>
 	</div>
 
-                
-                    <p>Method</p>
-                    <p>I implemented this feature by following the method shown in class. In particular, given the texture coordinates uv, the corresponding point is found in the raster file. The color is interpolated from surrounding pixels using bilinear interpolation.</p>
                     <p> UV Mapping of a Sphere<p>
                     <p> To determine the uv coordinates of a sphere, I followed the method shown <a href="https://graphics.stanford.edu/courses/cs348b-96/texturing/texturing1.html">here</a> (see part 3: Parameterization of a sphere).</p>
                     <p> UV Mapping of a Cube<p>
-                    <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube, I determined which face the point lied on and calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
+                    <p> To determine the uv coordinates of a cube, I divided the texture file into 6 boxes (see image below). Each box represents a face of the cube. I decided to map each box to the faces as shown in the image. Given a point on the cube and the cube's position, I determined which face the point lied on by checking its co-ordinates against the cube's position. I calculated the uv coordinates using the size of the cube and the position of the point on the face.</p>
+			<img src="imgs/block.png">
 		      </div>
                 <div id="menu2" class="tab-pane fade">
                       <h3>Soft Shadows</h3>
-                  <p>The soft shadow option is specified in the lua file. Shadows in the scene will appear faded rather than crisp.</p> 
+                  <p>The soft shadow option is specified in the lua file as a parameter to the render command. Shadows in the scene will appear faded rather than crisp.</p> 
+			<p>In order to achieve this, multiple shadow rays are directed to each light source, but with some variation in the light source's original position. This results in the shadow rays creating an "area" surrounding the light. I varied the position of the light source using random sampling in the x, y, and z-axis. This resulted in 125 sample shadow rays.</p>
                     <p><i>
                         Image 1: Soft shadows disabled <br/>
                         Image 2: Soft shadows enabled<br/>
@@ -246,7 +249,9 @@
 		    </div>
                 <div id="menu3" class="tab-pane fade">
                            <h3>Glossy Reflections</h3>
-                      <p>The glossy reflection option specified in the lua file. Reflections will appear glossy, depending on the level of glossiness. Glossiness is determined by the object's Phong Exponent. An exponent of 1 means the object is diffuse. An exponent of over 100 means the object is very glossy to the point of mirror reflection. When glossy reflections are not enabled, all reflections will be mirror reflections.</p> 
+                      <p>The glossy reflection option specified in the lua file as a parameter to the render command. Reflections will appear glossy, depending on the level of glossiness. Glossiness is determined by the object's Phong Exponent. An exponent of 1 means the object is diffuse. An exponent of over 100 means the object is very glossy to the point of mirror reflection. When glossy reflections are not enabled, all reflections will be mirror reflections.<br/>
+			In order to achieve this, multiple perturbed reflected rays are fired in the direction of a mirror reflected ray. This is done by calculating the reflected ray and choosing a point on this ray to manipulate (by using the parametric equation of the ray, I used t = 50). This point will act as the "look at" direction from the intersection point. Reflected rays are perturbed by slightly moving this chosen point in the x, y, and z-axis. This variation is done using regular sampling. The following image uses 125 samples.<br/>
+			Furthermore, the reflectivity coefficient of objects is dependent on the Phong exponent. I calculated the coefficient as k/100, where k is the Phong exponent of the object's material. </p> 
                         <p><i>
                             Image 1: Glossy reflection disabled <br/>
                             Image 2: Glossy reflection enabled. The pink spheres become more glossy from left to right, with the first sphere being diffuse and the last sphere being very glossy<br/>
@@ -271,7 +276,9 @@
                 </div>
                 <div id="menu4" class="tab-pane fade">
                        <h3>Bump Mapping</h3>
-              <p>Bump maps are specified in the lua file. Grayscale images are used to determine the bumps. Bump mapping can be applied to spheres and cubes.</p>
+              <p>Bump maps are specified in the lua file as its own command. Grayscale images are used to determine the bumps. Bump mapping can be applied to spheres and cubes. Bumps on objects are achieved by perturbing the normals.</p>
+			<p>I implemented this feature by following the method shown in class. In particular, tangent vectors Ou, Ov are found at the intersection point which are perpendicular to the normal. These vectors are found by taking the cross product of the ray direction and the normal, followed by the cross product of the normal and Ou. Bu and Bv are the partial derivatives of the bump function which are computed numberically from the formula given in class. The bump function and uv calculation is the same as the function used for texture mapping, where the color is interpolated from surrounding pixels using bilinear interpolation. </p>
+			<p> The following images show objects with bump mapping. The center objects show bump mapping with texture mapping.</p>
                 <p><i>
                     Image 1: Objects without bump mapping <br/>
                     Image 2: Objects with bump mapping<br/>
@@ -299,14 +306,10 @@
 					</div>
 	    </div>
 	</div>
-                
-                <h4>Method</h4>
-                <p>I implemented this feature by following the method shown in class. In particular, the normal vector is manipulated to give the effect of bumps on objects UV mapping of the objects are done the same way in texture mapping.</p>
-
                 </div>
                 <div id="menu5" class="tab-pane fade">
                       <h3>Anti-aliasing</h3>
-              <p>The anti-aliasing option is specified in the lua file. Anti-aliasing allows the edges of the object to look less pixelated and more realistic.</p>
+              <p>The anti-aliasing option is specified in the lua file as a parameter to the render command. Anti-aliasing allows the edges of the object to look less pixelated and more realistic. I used the supersampling method, using regular sampling. The following image uses 9 samples.</p>
                 <p><i>
                     Image 1: Anti-aliasing disabled <br/>
                     Image 2: Anti-aliasing enabled<br/>
@@ -331,11 +334,12 @@
                 </div>
                 <div id="menu6" class="tab-pane fade">
                        <h3>Motion Blur</h3>
-              <p>Objects in motion are specified in the lua file. The motion blur option is also specified in the lua file. Motion blur is used to show moving objects.</p>
+              <p>Objects in motion are specified in the lua file as its own command. A vector is specified which represents a translation over time. The motion blur option is also specified in the lua file as a parameter to the render command. Motion blur is used to show moving objects.</p>
+			<p> In order to achieve this, distributed ray tracing is used in both time and space. For time, I used stochastic sampling. A random number is generated between 0 and 1 which represents the percentage of time passed. For example, 0.5 means that the object has travelled 50% of its translation or motion, and 1 represents it has fully completed its motion or translation. This random number is multiplied against the inputted vector, and the object is then translated by this vector. 10 samples are used time. For space, I used random sampling. In fact, I just used my anti-aliasing code since it does random sampling in space. 9 samples are used for space.
                 <p><i>
                     Image 1: Scene without motion blur <br/>
                     Image 2: Scene with stochastic sampling in time<br/>
-                    Image 2: Scene with stochastic sampling in time and space<br/>
+                    Image 2: Scene with stochastic sampling in time and random sampling in space<br/>
                     </i></p>
 			<div class="container">
  
@@ -362,7 +366,7 @@
                 </div>
                 <div id="menu7" class="tab-pane fade">
                        <h3>Animation</h3>
-              <p>An animation was created through numerous lua files where the camera position is slightly altered each time. Each scene file rendered an image, with all of the images being strung together into a .gif through an external .gif creation application.</p>
+              <p>An animation was created through numerous lua files where the camera position is slightly altered each time. Looking back I could have just called the render command multiple times in one lua file but working under high pressure sometimes makes me forget simple things. Each scene file rendered an image, with all of the images being strung together into a .gif through an external .gif creation application.</p>
                 <div class="container">
  
 	    <div class="row">
